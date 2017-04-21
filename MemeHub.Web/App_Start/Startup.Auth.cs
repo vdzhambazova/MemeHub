@@ -1,11 +1,12 @@
 ﻿using System;
+using MemeHub.Data;
+using MemeHub.Models.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using MemeHub.Web.Models;
 
 namespace MemeHub.Web
 {
@@ -15,7 +16,7 @@ namespace MemeHub.Web
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(MemeHubContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
@@ -54,15 +55,15 @@ namespace MemeHub.Web
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1040789562720432",
+               appSecret: "2da6c1793c262f4cf369f35954bdee69");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "133771014977-pk033to04re8caug85hh5r0afbonh4dr.apps.googleusercontent.com",
+                ClientSecret = "bcE-yNs9CDdg4dHrV9-C9_1V"
+            });
         }
     }
 }

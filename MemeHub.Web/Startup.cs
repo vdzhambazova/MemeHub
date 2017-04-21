@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(MemeHub.Web.Startup))]
+[assembly: OwinStartup(typeof(MemeHub.Web.Startup))]
 namespace MemeHub.Web
 {
     public partial class Startup
