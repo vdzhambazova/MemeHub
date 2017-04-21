@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MemeHub.Models.Enums;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MemeHub.Models.ViewModels.Memes
 {
@@ -13,7 +7,7 @@ namespace MemeHub.Models.ViewModels.Memes
         public int Id { get; set; }
 
         [Required]
-        public byte[] MemeImage { get; set; }
+        public string MemeImageUrl { get; set; }
 
         [Required]
         [MinLength(10), MaxLength(200)]

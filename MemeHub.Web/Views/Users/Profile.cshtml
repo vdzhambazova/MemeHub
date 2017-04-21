@@ -1,0 +1,32 @@
+﻿@model MemeHub.Models.ViewModels.Users.UserProfileViewModel
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        @*  @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-lg btn-default" })*@
+        <h1>My Profile!</h1>
+        <p class="lead">Look at you, you hilarious bastard!</p>
+        <img src="@Model.ProiflePictureUrl" class="img-thumbnail" alt="profilePicture" width="200" />
+        <h3>@Html.DisplayFor(uvm => uvm.Username)</h3>
+        @Html.ActionLink("Edit Profile", "Edit", "Users", null, new { @class = "btn btn-lg btn-primary" })
+    </div>
+
+    @if (@Model.Memes.Count > 0)
+    {
+        foreach (var meme in @Model.Memes)
+        {
+            <article>
+                <header>
+                    <h2>
+                        @Html.DisplayFor(m => meme.Caption)
+                    </h2>
+                </header>
+
+                <img src="@meme.MemeImageUrl" alt="@meme.Caption" />
+            </article>
+        }
+    }
+
+</div>

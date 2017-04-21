@@ -16,7 +16,7 @@ namespace MemeHub.Models.Models
         public int Id { get; set; }
 
         [Required]
-        public byte[] MemeImage { get; set; }
+        public string MemeImageUrl { get; set; }
 
         [Required]
         [MinLength(10), MaxLength(200)]

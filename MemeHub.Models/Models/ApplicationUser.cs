@@ -12,6 +12,8 @@ namespace MemeHub.Models.Models
         [BirthDate]
         public DateTime? BirthDate { get; set; }
 
+        public string ProiflePictureUrl { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
