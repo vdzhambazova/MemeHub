@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using MemeHub.Models.Models;
+using MemeHub.Models.BindingModels;
 using MemeHub.Models.ViewModels.Users;
 using MemeHub.Services;
 
@@ -16,21 +16,43 @@ namespace MemeHub.Web.Controllers
             this.usersService = new UsersService();
         }
 
-        // GET: Users
+        //  GET: Users
         [HttpGet]
         [Route("profile")]
         public ActionResult Profile()
         {
             string userName = this.User.Identity.Name;
             UserProfileViewModel upvm = this.usersService.GetProfile(userName);
-            return View(upvm);
+
+            return this.View(upvm);
         }
 
         [HttpGet]
         [Route("edit")]
         public ActionResult Edit()
         {
-            return this.View();
+            string userName = this.User.Identity.Name;
+            UserEditViewModel epvm = this.usersService.GetEditUser(userName);
+
+            return this.View(epvm);
+        }
+
+        [HttpPost]
+        [Route("edit")]
+        public ActionResult Edit(UserEditBindingModel uebm)
+        {
+            string userName = this.User.Identity.Name;
+
+            if (ModelState.IsValid)
+            {
+                this.usersService.EditUser(uebm, userName);
+                return this.RedirectToAction("Profile");
+            }
+
+
+            UserEditViewModel uevm = this.usersService.GetEditUser(userName);
+
+            return this.View(uevm);
         }
     }
 }

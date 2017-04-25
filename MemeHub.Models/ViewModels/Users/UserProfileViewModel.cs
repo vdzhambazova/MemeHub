@@ -14,6 +14,6 @@ namespace MemeHub.Models.ViewModels.Users
 
         public string ProiflePictureUrl { get; set; }
 
-        public ICollection<UserMemeViewModel> Memes { get; set; }
+        public IEnumerable<MemeUserViewModel> Memes { get; set; }
     }
 }

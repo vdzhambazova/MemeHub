@@ -1,8 +1,8 @@
-﻿using System.IO.MemoryMappedFiles;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
+using MemeHub.Models.BindingModels;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Models.ViewModels.Users;
@@ -24,8 +24,11 @@ namespace MemeHub.Web
         {
             Mapper.Initialize(expression =>
             {
-                expression.CreateMap<Meme, UserMemeViewModel>();
+                expression.CreateMap<Meme, MemeUserViewModel>();
                 expression.CreateMap<ApplicationUser, UserProfileViewModel>();
+                expression.CreateMap<Meme, MemeпProfileViewModel>();
+                expression.CreateMap<ApplicationUser, UserEditViewModel>();
+                expression.CreateMap<UserEditBindingModel, ApplicationUser>();
             });
         }
     }

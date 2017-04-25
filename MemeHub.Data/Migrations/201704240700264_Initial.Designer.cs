@@ -7,13 +7,13 @@ namespace MemeHub.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ImageChanges : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ImageChanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704211055334_ImageChanges"; }
+            get { return "201704240700264_Initial"; }
         }
         
         string IMigrationMetadata.Source

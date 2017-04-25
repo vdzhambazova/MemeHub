@@ -1,29 +1,45 @@
 ﻿using System.Web.Mvc;
+using MemeHub.Models.ViewModels.Memes;
+using MemeHub.Services;
 
 namespace MemeHub.Web.Controllers
 {
+    [RoutePrefix("memes")]
+    [Authorize(Roles = "Poster")]
     public class MemesController : Controller
     {
-        // GET: Memes
-        public ActionResult Index()
+        private MemesService memesService;
+
+        public MemesController()
         {
-            return View();
+            this.memesService = new MemesService();
         }
 
-        // GET: Memes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+        [HttpGet]
+        [Route("details/{id}")]
+        public ActionResult Details(int? id)
+        { 
+            MemeDetailsViewModel mdvm = this.memesService.GetMemeDetails(id);
+
+            if (mdvm == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(mdvm);
         }
 
-        // GET: Memes/Create
+        [HttpGet]
+        [Route("create")]
         public ActionResult Create()
         {
+            string userName = this.User.Identity.Name;
+            MemeCreateViewModel mcvm = this.memesService.GetCreateMeme(userName);
             return View();
         }
 
-        // POST: Memes/Create
         [HttpPost]
+        [Route("create")]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -37,22 +53,23 @@ namespace MemeHub.Web.Controllers
                 return View();
             }
         }
-
-        // GET: Memes/Edit/5
+        
+        [HttpGet]
+        [Route("edit/{id}")]
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Memes/Edit/5
         [HttpPost]
+        [Route("edit/{id}")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Profile", "Users");
             }
             catch
             {
@@ -60,21 +77,23 @@ namespace MemeHub.Web.Controllers
             }
         }
 
-        // GET: Memes/Delete/5
+        [HttpGet]
+        [Route("delete/{id}")]
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Memes/Delete/5
+
         [HttpPost]
+        [Route("delete/{Id}")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Profile", "Users");
             }
             catch
             {

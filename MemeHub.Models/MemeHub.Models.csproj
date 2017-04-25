@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\BirthDateAttribute.cs" />
+    <Compile Include="BindingModels\UserEditBindingModel.cs" />
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -139,16 +140,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\Memes\UserMemeViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentDisplayViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeCreateViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeпProfileViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeUserViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserEditViewModel.cs" />
     <Compile Include="ViewModels\Users\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BindingModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,27 +1,72 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using MemeHub.Models.ViewModels.Memes;
+using MemeHub.Services;
 
 namespace MemeHub.Web.Controllers
 {
     [RequireHttps]
+    [RoutePrefix("Home")]
+    [Authorize(Roles="Poster")]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private HomeService homeService;
+
+        public HomeController()
         {
-            return View();
+            this.homeService = new HomeService();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("Hottest")]
+        public ActionResult All()
         {
-            ViewBag.Message = "Your application description page.";
+            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetAll();
 
-            return View();
+            //return RedirectToAction("Index", mdvm);
+            return View("~/Views/Home/Index.cshtml", mdvm);
         }
 
-        public ActionResult Contact()
+        [HttpGet]
+        [Route("Freshest")]
+        public ActionResult New()
         {
-            ViewBag.Message = "Your contact page.";
+            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetNew();
 
-            return View();
+            return View("~/Views/Home/Index.cshtml", mdvm);
         }
+
+        [HttpGet]
+        [Route("Dank")]
+        public ActionResult Dank()
+        {
+            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetDank();
+
+            return View("~/Views/Home/Index.cshtml", mdvm);
+        }
+
+        [HttpGet]
+        [Route("Fun")]
+        public ActionResult Fun()
+        {
+            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetFun();
+
+            return View("~/Views/Home/Index.cshtml", mdvm);
+        }
+
+        [HttpGet]
+        [Route("Awesome")]
+        public ActionResult Awesome()
+        {
+            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetAwesome();
+
+            return View("~/Views/Home/Index.cshtml", mdvm);
+        }
+
+        //public ActionResult Index(IEnumerable<MemeDisplayViewModel> mdvm)
+        //{
+        //    return this.View(mdvm);
+        //}
     }
 }

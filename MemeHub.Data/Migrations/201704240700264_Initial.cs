@@ -7,36 +7,42 @@ namespace MemeHub.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                    "dbo.Comments",
-                    c => new
+                "dbo.Comments",
+                c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Content = c.String(nullable: false, maxLength: 500),
                         PostDate = c.DateTime(nullable: false),
                         Meme_Id = c.Int(),
                         Writer_Id = c.String(maxLength: 128),
+                        Poster_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Memes", t => t.Meme_Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Writer_Id)
+                .ForeignKey("dbo.Posters", t => t.Poster_Id)
                 .Index(t => t.Meme_Id)
-                .Index(t => t.Writer_Id);
-
+                .Index(t => t.Writer_Id)
+                .Index(t => t.Poster_Id);
+            
             CreateTable(
-                    "dbo.Memes",
-                    c => new
+                "dbo.Memes",
+                c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        MemeImage = c.Binary(nullable: false),
+                        MemeImageUrl = c.String(nullable: false),
                         Caption = c.String(nullable: false, maxLength: 200),
                         PostDate = c.DateTime(),
                         MemePoints = c.Int(nullable: false),
                         Category = c.Int(nullable: false),
                         OriginalPoster_Id = c.String(maxLength: 128),
+                        Poster_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.OriginalPoster_Id)
-                .Index(t => t.OriginalPoster_Id);
+                .ForeignKey("dbo.Posters", t => t.Poster_Id)
+                .Index(t => t.OriginalPoster_Id)
+                .Index(t => t.Poster_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -44,6 +50,7 @@ namespace MemeHub.Data.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         BirthDate = c.DateTime(),
+                        ProiflePictureUrl = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

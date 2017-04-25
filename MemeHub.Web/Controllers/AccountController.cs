@@ -162,7 +162,7 @@ namespace MemeHub.Web.Controllers
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("All", "Home");
                 }
                 AddErrors(result);
             }
@@ -368,6 +368,10 @@ namespace MemeHub.Web.Controllers
                 }
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
+                var currentUser = UserManager.FindByName(user.UserName);
+                this.accountService.CreateUser(currentUser);
+                var role = UserManager.AddToRole(currentUser.Id, "Poster");
+
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
@@ -391,7 +395,7 @@ namespace MemeHub.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "Home");
         }
 
         //
@@ -448,7 +452,7 @@ namespace MemeHub.Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

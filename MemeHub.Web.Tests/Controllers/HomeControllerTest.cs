@@ -14,7 +14,7 @@ namespace MemeHub.Web.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.All() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

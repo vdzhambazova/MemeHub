@@ -50,7 +50,7 @@ namespace MemeHub.Web.Controllers
         }
 
         //
-        // GET: /Manage/Index
+        // GET: /Manage/All
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
