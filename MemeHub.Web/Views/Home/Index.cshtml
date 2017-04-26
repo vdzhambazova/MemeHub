@@ -10,12 +10,14 @@
             <br />
             <article>
                 <header>
-                    <h2>
-                        @Html.DisplayFor(m => meme.Caption)
-                    </h2>
+                    <h3>
+                        <strong>
+                            @Html.DisplayFor(m => meme.Caption)
+                        </strong>
+                    </h3>
                 </header>
 
-                <img src="@meme.MemeImageUrl" alt="@meme.Caption" />
+                <img src="@meme.MemeImageUrl" alt="@meme.Caption" width="500"/>
 
                 <p class="text-muted">@meme.MemePoints Points @meme.Comments.Count() Comments</p>
                 <hr />

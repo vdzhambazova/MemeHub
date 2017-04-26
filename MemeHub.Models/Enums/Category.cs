@@ -2,8 +2,7 @@
 {
     public enum Category
     {
-        Fun,
-        Wtf,
+        Hilarious,
         Dank,
         Awesome,
     }

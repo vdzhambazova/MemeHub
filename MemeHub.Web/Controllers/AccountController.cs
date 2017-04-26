@@ -16,11 +16,12 @@ namespace MemeHub.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private AccountService accountService; 
 
-        public AccountController()
+        private IAccountService accountService; 
+
+        public AccountController(IAccountService accountService)
         {
-            this.accountService = new AccountService();
+            this.accountService = accountService;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

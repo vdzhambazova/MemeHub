@@ -114,7 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\BirthDateAttribute.cs" />
-    <Compile Include="BindingModels\UserEditBindingModel.cs" />
+    <Compile Include="BindingModels\Memes\MemeCreateBindingModel.cs" />
+    <Compile Include="BindingModels\Memes\MemeEditBindingModel.cs" />
+    <Compile Include="BindingModels\Users\UserEditBindingModel.cs" />
     <Compile Include="Enums\Category.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -143,8 +145,10 @@
     <Compile Include="ViewModels\Comments\CommentDisplayViewModel.cs" />
     <Compile Include="ViewModels\Memes\MemeCreateViewModel.cs" />
     <Compile Include="ViewModels\Memes\MemeDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Memes\MemeпProfileViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeDisplayViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeEditViewModel.cs" />
     <Compile Include="ViewModels\Memes\MemeUserViewModel.cs" />
+    <Compile Include="ViewModels\Memes\MemeDeleteViewModel.cs" />
     <Compile Include="ViewModels\Users\UserEditViewModel.cs" />
     <Compile Include="ViewModels\Users\UserProfileViewModel.cs" />
   </ItemGroup>

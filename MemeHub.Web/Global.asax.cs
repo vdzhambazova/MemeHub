@@ -2,7 +2,8 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
-using MemeHub.Models.BindingModels;
+using MemeHub.Models.BindingModels.Memes;
+using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Models.ViewModels.Users;
@@ -26,9 +27,14 @@ namespace MemeHub.Web
             {
                 expression.CreateMap<Meme, MemeUserViewModel>();
                 expression.CreateMap<ApplicationUser, UserProfileViewModel>();
-                expression.CreateMap<Meme, MemeпProfileViewModel>();
+                expression.CreateMap<Meme, MemeDisplayViewModel>();
                 expression.CreateMap<ApplicationUser, UserEditViewModel>();
                 expression.CreateMap<UserEditBindingModel, ApplicationUser>();
+                expression.CreateMap<MemeCreateBindingModel, Meme>();
+                expression.CreateMap<Meme, MemeEditViewModel>();
+                expression.CreateMap<MemeEditBindingModel, MemeEditViewModel>();
+                expression.CreateMap<MemeEditBindingModel, Meme>();
+                expression.CreateMap<Meme, MemeDeleteViewModel>();
             });
         }
     }

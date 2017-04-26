@@ -4,7 +4,7 @@ using MemeHub.Models.ViewModels.Comments;
 
 namespace MemeHub.Models.ViewModels.Memes
 {
-    public class MemeпProfileViewModel
+    public class MemeDisplayViewModel
     {
         public int Id { get; set; }
 

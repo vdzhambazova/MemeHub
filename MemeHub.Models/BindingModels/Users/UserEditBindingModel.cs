@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using MemeHub.Models.Attributes;
 
-namespace MemeHub.Models.BindingModels
+namespace MemeHub.Models.BindingModels.Users
 {
     public class UserEditBindingModel
     {

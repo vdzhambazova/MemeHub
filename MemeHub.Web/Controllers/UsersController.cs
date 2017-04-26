@@ -1,24 +1,24 @@
 ﻿using System.Web.Mvc;
-using MemeHub.Models.BindingModels;
+using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.ViewModels.Users;
 using MemeHub.Services;
 
 namespace MemeHub.Web.Controllers
 {
     [Authorize(Roles = "Poster")]
-    [RoutePrefix("users")]
+    [RoutePrefix("Users")]
     public class UsersController : Controller
     {
-        private UsersService usersService;
+        private IUsersService usersService;
 
-        public UsersController()
+        public UsersController(IUsersService usersService)
         {
-            this.usersService = new UsersService();
+            this.usersService = usersService;
         }
 
         //  GET: Users
         [HttpGet]
-        [Route("profile")]
+        [Route("Profile")]
         public ActionResult Profile()
         {
             string userName = this.User.Identity.Name;
@@ -28,7 +28,7 @@ namespace MemeHub.Web.Controllers
         }
 
         [HttpGet]
-        [Route("edit")]
+        [Route("Edit")]
         public ActionResult Edit()
         {
             string userName = this.User.Identity.Name;
@@ -38,7 +38,7 @@ namespace MemeHub.Web.Controllers
         }
 
         [HttpPost]
-        [Route("edit")]
+        [Route("Edit")]
         public ActionResult Edit(UserEditBindingModel uebm)
         {
             string userName = this.User.Identity.Name;

@@ -16,10 +16,11 @@ namespace MemeHub.Models.Models
         public int Id { get; set; }
 
         [Required]
+        [MinLength(6), MaxLength(200)]
         public string MemeImageUrl { get; set; }
 
         [Required]
-        [MinLength(10), MaxLength(200)]
+        [MinLength(3), MaxLength(100)]
         public string Caption { get; set; }
 
         public DateTime? PostDate { get; set; }

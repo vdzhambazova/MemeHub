@@ -7,49 +7,49 @@ using MemeHub.Models.ViewModels.Memes;
 
 namespace MemeHub.Services
 {
-    public class HomeService : Service
+    public class HomeService : Service, IHomeService
     {
-        public IEnumerable<MemeпProfileViewModel> GetAll()
+        public IEnumerable<MemeDisplayViewModel> GetAll()
         {
-            IEnumerable<Meme> memes = this.Context.Memes;
-            IEnumerable<MemeпProfileViewModel> mdvm =
-                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeпProfileViewModel>>(memes);
+            IEnumerable<Meme> memes = this.Context.Memes.OrderByDescending(m => m.MemePoints);
+            IEnumerable<MemeDisplayViewModel> mdvm =
+                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
             return mdvm;
         }
 
-        public IEnumerable<MemeпProfileViewModel> GetNew()
+        public IEnumerable<MemeDisplayViewModel> GetNew()
         {
             IEnumerable<Meme> memes = this.Context.Memes.OrderByDescending(m => m.PostDate);
-            IEnumerable<MemeпProfileViewModel> mdvm =
-                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeпProfileViewModel>>(memes);
+            IEnumerable<MemeDisplayViewModel> mdvm =
+                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
             return mdvm;
         }
 
-        public IEnumerable<MemeпProfileViewModel> GetDank()
+        public IEnumerable<MemeDisplayViewModel> GetDank()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Dank);
-            IEnumerable<MemeпProfileViewModel> mdvm =
-                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeпProfileViewModel>>(memes);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Dank).OrderByDescending(m => m.MemePoints);
+            IEnumerable<MemeDisplayViewModel> mdvm =
+                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
             return mdvm;
         }
 
-        public IEnumerable<MemeпProfileViewModel> GetFun()
+        public IEnumerable<MemeDisplayViewModel> GetFun()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Fun);
-            IEnumerable<MemeпProfileViewModel> mdvm =
-                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeпProfileViewModel>>(memes);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Hilarious).OrderByDescending(m => m.MemePoints);
+            IEnumerable<MemeDisplayViewModel> mdvm =
+                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
             return mdvm;
         }
 
-        public IEnumerable<MemeпProfileViewModel> GetAwesome()
+        public IEnumerable<MemeDisplayViewModel> GetAwesome()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Awesome);
-            IEnumerable<MemeпProfileViewModel> mdvm =
-                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeпProfileViewModel>>(memes);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Awesome).OrderByDescending(m => m.MemePoints);
+            IEnumerable<MemeDisplayViewModel> mdvm =
+                Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
             return mdvm;
         }

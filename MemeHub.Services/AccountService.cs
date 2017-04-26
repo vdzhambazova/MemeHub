@@ -2,7 +2,7 @@
 
 namespace MemeHub.Services
 {
-    public class AccountService : Service
+    public class AccountService : Service, IAccountService
     {
         public void CreateUser(ApplicationUser user)
         {

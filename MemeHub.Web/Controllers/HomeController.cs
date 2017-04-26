@@ -10,11 +10,11 @@ namespace MemeHub.Web.Controllers
     [Authorize(Roles="Poster")]
     public class HomeController : Controller
     {
-        private HomeService homeService;
+        private IHomeService homeService;
 
-        public HomeController()
+        public HomeController(IHomeService homeService)
         {
-            this.homeService = new HomeService();
+            this.homeService = homeService;
         }
 
         [HttpGet]
@@ -22,7 +22,7 @@ namespace MemeHub.Web.Controllers
         [Route("Hottest")]
         public ActionResult All()
         {
-            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetAll();
+            IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetAll();
 
             //return RedirectToAction("Index", mdvm);
             return View("~/Views/Home/Index.cshtml", mdvm);
@@ -32,7 +32,7 @@ namespace MemeHub.Web.Controllers
         [Route("Freshest")]
         public ActionResult New()
         {
-            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetNew();
+            IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetNew();
 
             return View("~/Views/Home/Index.cshtml", mdvm);
         }
@@ -41,7 +41,7 @@ namespace MemeHub.Web.Controllers
         [Route("Dank")]
         public ActionResult Dank()
         {
-            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetDank();
+            IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetDank();
 
             return View("~/Views/Home/Index.cshtml", mdvm);
         }
@@ -50,7 +50,7 @@ namespace MemeHub.Web.Controllers
         [Route("Fun")]
         public ActionResult Fun()
         {
-            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetFun();
+            IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetFun();
 
             return View("~/Views/Home/Index.cshtml", mdvm);
         }
@@ -59,7 +59,7 @@ namespace MemeHub.Web.Controllers
         [Route("Awesome")]
         public ActionResult Awesome()
         {
-            IEnumerable<MemeпProfileViewModel> mdvm = this.homeService.GetAwesome();
+            IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetAwesome();
 
             return View("~/Views/Home/Index.cshtml", mdvm);
         }

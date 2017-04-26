@@ -1,104 +1,101 @@
 ﻿using System.Web.Mvc;
+using AutoMapper;
+using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Services;
 
 namespace MemeHub.Web.Controllers
 {
-    [RoutePrefix("memes")]
+    [RoutePrefix("Memes")]
     [Authorize(Roles = "Poster")]
     public class MemesController : Controller
     {
-        private MemesService memesService;
+        private IMemesService memesService;
 
-        public MemesController()
+        public MemesController(IMemesService memesService)
         {
-            this.memesService = new MemesService();
+            this.memesService = memesService;
         }
 
         [HttpGet]
-        [Route("details/{id}")]
+        [Route("Details/{id}")]
         public ActionResult Details(int? id)
-        { 
-            MemeDetailsViewModel mdvm = this.memesService.GetMemeDetails(id);
-
-            if (mdvm == null)
+        {
+            try
             {
-                return HttpNotFound();
+                MemeDetailsViewModel mdvm = this.memesService.GetMemeDetails(id);
+                return this.View(mdvm);
             }
-
-            return View(mdvm);
+            catch
+            {
+                return this.HttpNotFound();
+            }
         }
 
         [HttpGet]
-        [Route("create")]
+        [Route("Create")]
         public ActionResult Create()
         {
-            string userName = this.User.Identity.Name;
-            MemeCreateViewModel mcvm = this.memesService.GetCreateMeme(userName);
-            return View();
+            return this.View(new MemeCreateViewModel());
         }
 
         [HttpPost]
-        [Route("create")]
-        public ActionResult Create(FormCollection collection)
+        [Route("Create")]
+        public ActionResult Create(MemeCreateBindingModel mcbm)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (this.ModelState.IsValid)
             {
-                return View();
+                string userName = this.User.Identity.Name;
+                this.memesService.CreateMeme(mcbm, userName);
+
+                return this.RedirectToAction("Profile", "Users");
             }
+
+            return this.HttpNotFound();
         }
-        
+
         [HttpGet]
-        [Route("edit/{id}")]
+        [Route("Edit/{id}")]
         public ActionResult Edit(int id)
         {
-            return View();
+            MemeEditViewModel mevm = this.memesService.GetEditMeme(id);
+
+            return this.View(mevm);
         }
 
         [HttpPost]
-        [Route("edit/{id}")]
-        public ActionResult Edit(int id, FormCollection collection)
+        [Route("Edit/{id}")]
+        public ActionResult Edit(int id, MemeEditBindingModel bind)
         {
-            try
+            if (this.ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                this.memesService.EditMeme(id, bind);
                 return RedirectToAction("Profile", "Users");
             }
-            catch
-            {
-                return View();
-            }
+
+            MemeEditViewModel mevm = Mapper.Map<MemeEditBindingModel, MemeEditViewModel>(bind);
+            return this.View(mevm);
+
         }
 
         [HttpGet]
-        [Route("delete/{id}")]
-        public ActionResult Delete(int id)
+        [Route("Delete/{id}")]
+        public ActionResult Delete(int? id)
         {
-            return View();
+            MemeDeleteViewModel mdvm = this.memesService.GetDeleteMeme(id);
+
+            return this.View(mdvm);
         }
 
 
         [HttpPost]
-        [Route("delete/{Id}")]
-        public ActionResult Delete(int id, FormCollection collection)
+        [Route("Delete/{id}")]
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            this.memesService.DeleteMeme(id);
 
-                return RedirectToAction("Profile", "Users");
-            }
-            catch
-            {
-                return View();
-            }
+            return this.RedirectToAction("Profile", "Users");
         }
     }
 }

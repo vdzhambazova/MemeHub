@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using MemeHub.Models.BindingModels;
+using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Models.ViewModels.Users;
 
 namespace MemeHub.Services
 {
-    public class UsersService : Service
+    public class UsersService : Service, IUsersService
     {
         public UserProfileViewModel GetProfile(string userName)
         {
