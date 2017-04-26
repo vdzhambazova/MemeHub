@@ -1,7 +1,7 @@
 ﻿using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.ViewModels.Users;
 
-namespace MemeHub.Services
+namespace MemeHub.Services.Contracts
 {
     public interface IUsersService
     {

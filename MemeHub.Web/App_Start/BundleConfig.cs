@@ -23,7 +23,7 @@ namespace MemeHub.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/readable.bootstrap.css",
                       "~/Content/site.css"));
         }
     }

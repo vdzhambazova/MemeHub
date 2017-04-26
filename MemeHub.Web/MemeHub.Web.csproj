@@ -264,6 +264,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\journal.bootstrap.css" />
+    <Content Include="Content\journal.bootstrap.min.css" />
+    <Content Include="Content\readable.bootstrap.css" />
+    <Content Include="Content\readable.bootstrap.min.css" />
+    <Content Include="Content\sandstone.bootstrap.css" />
+    <Content Include="Content\sandstone.bootstrap.min.css" />
+    <Content Include="Content\simplex.bootstrap.css" />
+    <Content Include="Content\simplex.bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -331,6 +339,8 @@
     <Content Include="Views\Memes\Create.cshtml" />
     <Content Include="Views\Memes\Edit.cshtml" />
     <Content Include="Views\Memes\Delete.cshtml" />
+    <Content Include="Views\Shared\_MemesProfilePartial.cshtml" />
+    <Content Include="Views\Memes\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MemeHub.Data\MemeHub.Data.csproj">

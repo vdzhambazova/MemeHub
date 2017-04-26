@@ -5,6 +5,7 @@ using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Models.ViewModels.Users;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Services
 {

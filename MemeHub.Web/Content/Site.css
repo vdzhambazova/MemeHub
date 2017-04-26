@@ -30,3 +30,7 @@ textarea {
      height: 150px;
      text-indent: -9999px; /* hides the link text */
 }
+
+a#upload-btn. {
+    color: beige;
+}

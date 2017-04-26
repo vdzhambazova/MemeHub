@@ -1,7 +1,8 @@
 ﻿using MemeHub.Models.BindingModels.Memes;
+using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
 
-namespace MemeHub.Services
+namespace MemeHub.Services.Contracts
 {
     public interface IMemesService
     {
@@ -11,5 +12,6 @@ namespace MemeHub.Services
         MemeDeleteViewModel GetDeleteMeme(int? id);
         MemeEditViewModel GetEditMeme(int id);
         MemeDetailsViewModel GetMemeDetails(int? id);
+        CommentCreateViewModel CreateComment(string userId, int memeId);
     }
 }

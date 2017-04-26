@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Services;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers
 {
@@ -20,6 +21,7 @@ namespace MemeHub.Web.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("Hottest")]
+        [Route("~/", Name = "default")]
         public ActionResult All()
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetAll();

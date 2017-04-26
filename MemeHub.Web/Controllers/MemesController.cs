@@ -1,8 +1,9 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
 using MemeHub.Models.BindingModels.Memes;
+using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
-using MemeHub.Services;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers
 {
@@ -97,5 +98,11 @@ namespace MemeHub.Web.Controllers
 
             return this.RedirectToAction("Profile", "Users");
         }
+
+        //[HttpGet]
+        //public ActionResult CreateComment()
+        //{
+        //    return View("~/Views/Memes/Details.cshtml", new CommentCreateViewModel());
+        //}
     }
 }

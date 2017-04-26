@@ -17,38 +17,13 @@
 @if (Model.Memes.Any())
 {
     <div class="row">
-        <div class="col-md-3 col-md-offset-5 ">
+        <div class="col-sm-6 col-sm-offset-4 ">
             <h1>Your fun memes</h1>
             <br />
             <br />
         </div>
         <div class="col-md-6 col-md-offset-3">
-
-            @foreach (var meme in Model.Memes)
-            {
-                <br />
-                <article>
-                    <header>
-                        <h3>
-                            <strong>
-                                @Html.ActionLink(@meme.Caption, "Details", "Memes", new { id = meme.Id }, new { style = "color:#141414" })
-                            </strong>
-
-                        </h3>
-                        <br />
-                    </header>
-
-                    <img src="@meme.MemeImageUrl" alt="@meme.Caption" width="500" />
-                </article>
-                <br />
-                <div class="row">
-                    <div class="col-lg-1">@Html.ActionLink("Edit", "Edit", "Memes", new { id = meme.Id }, new { @class = "btn btn-sm btn-default" })</div>
-                    <div class="col-lg-1">@Html.ActionLink("Delete", "Delete", "Memes", new { id = meme.Id }, new { @class = "btn btn-sm btn-danger" })</div>
-                </div>
-                <br />
-                <hr />
-            }
-
+            @Html.Partial("_MemesProfilePartial")
         </div>
     </div>
 }

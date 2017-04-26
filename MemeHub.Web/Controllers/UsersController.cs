@@ -2,6 +2,7 @@
 using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.ViewModels.Users;
 using MemeHub.Services;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers
 {

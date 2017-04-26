@@ -35,6 +35,7 @@ namespace MemeHub.Web
                 expression.CreateMap<MemeEditBindingModel, MemeEditViewModel>();
                 expression.CreateMap<MemeEditBindingModel, Meme>();
                 expression.CreateMap<Meme, MemeDeleteViewModel>();
+                expression.CreateMap<Meme, MemeDetailsViewModel>();
             });
         }
     }

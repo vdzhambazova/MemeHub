@@ -1,0 +1,25 @@
+﻿@model MemeHub.Models.ViewModels.Users.UserProfileViewModel
+@foreach (var meme in Model.Memes)
+{
+    <br />
+    <article>
+        <header>
+            <h3>
+                <strong>
+                    @Html.ActionLink(@meme.Caption, "Details", "Memes", new { id = meme.Id }, null)
+                </strong>
+
+            </h3>
+            <br />
+        </header>
+
+        <img src="@meme.MemeImageUrl" alt="@meme.Caption" width="500" />
+    </article>
+    <br />
+    <div class="row">
+        <div class="col-lg-1">@Html.ActionLink("Edit", "Edit", "Memes", new { id = meme.Id }, new { @class = "btn btn-sm btn-default" })</div>
+        <div class="col-lg-1">@Html.ActionLink("Delete", "Delete", "Memes", new { id = meme.Id }, new { @class = "btn btn-sm btn-danger" })</div>
+    </div>
+    <br />
+    <hr />
+}

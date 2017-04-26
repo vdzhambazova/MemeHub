@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Account;
 using MemeHub.Services;
+using MemeHub.Services.Contracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

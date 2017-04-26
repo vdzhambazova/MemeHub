@@ -3,7 +3,9 @@ using System.Linq;
 using AutoMapper;
 using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.Models;
+using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Services
 {
@@ -21,7 +23,10 @@ namespace MemeHub.Services
 
         public MemeDetailsViewModel GetMemeDetails(int? id)
         {
-            throw new NotImplementedException();
+            Meme meme = this.Context.Memes.Find(id);
+            MemeDetailsViewModel mdvm = Mapper.Map<Meme, MemeDetailsViewModel>(meme);
+
+            return mdvm;
         }
 
         public MemeEditViewModel GetEditMeme(int id)
@@ -54,6 +59,13 @@ namespace MemeHub.Services
             this.Context.Memes.Remove(meme);
 
             this.Context.SaveChanges();
+        }
+
+        public CommentCreateViewModel CreateComment(string userId, int memeId)
+        {
+            Comment comment = new Comment();
+            //   CommentCreateViewModel
+            return new CommentCreateViewModel();
         }
     }
 }

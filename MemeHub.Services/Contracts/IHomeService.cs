@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MemeHub.Models.ViewModels.Memes;
 
-namespace MemeHub.Services
+namespace MemeHub.Services.Contracts
 {
     public interface IHomeService
     {

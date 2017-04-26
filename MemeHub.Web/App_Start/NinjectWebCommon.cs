@@ -1,4 +1,5 @@
 using MemeHub.Services;
+using MemeHub.Services.Contracts;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(MemeHub.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(MemeHub.Web.App_Start.NinjectWebCommon), "Stop")]

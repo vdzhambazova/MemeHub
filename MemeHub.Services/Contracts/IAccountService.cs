@@ -1,6 +1,6 @@
 ﻿using MemeHub.Models.Models;
 
-namespace MemeHub.Services
+namespace MemeHub.Services.Contracts
 {
     public interface IAccountService
     {

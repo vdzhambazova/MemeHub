@@ -4,6 +4,7 @@ using AutoMapper;
 using MemeHub.Models.Enums;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Services
 {

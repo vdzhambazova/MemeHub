@@ -10,6 +10,7 @@ namespace MemeHub.Models.Models
 
         [Required]
         [MaxLength(500)]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
         public virtual ApplicationUser Writer { get; set; }

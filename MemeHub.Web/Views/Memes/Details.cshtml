@@ -1,0 +1,31 @@
+﻿@model MemeHub.Models.ViewModels.Memes.MemeDetailsViewModel
+
+@{
+    ViewBag.Title = "Memehub";
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <article>
+            <header>
+                <h3>
+                    <strong>
+                        @Html.ActionLink(@Model.Caption, "Details", "Memes", new { id = @Model.Id }, null)
+                    </strong>
+                </h3>
+            </header>
+            <p class="text-muted">@Model.MemePoints Points @Model.Comments.Count() Comments</p>
+            <img src="@Model.MemeImageUrl" alt="@Model.Caption" width="500" />
+            <hr />
+            @*@Html.DisplayFor(m=>@Model.Item2.Writer)
+            @Html.DisplayFor(m => @Model.Item2.PostDate,null, new { @class = "text-muted"} )
+            <p class="text-muted">@Model.Item2.PostDate</p>
+            @Html.TextAreaFor(m => @Model.Item2.Content, new { @class = "whatever-class", @cols = 10, @rows = 2 })*@
+            @foreach (var comment in Model.Comments)
+            {
+                <h5>@Html.DisplayFor(m => comment.Writer.UserName)</h5>
+                <p>@Html.DisplayFor(m => comment.Content)</p>
+            }
+        </article>
+    </div>
+</div>

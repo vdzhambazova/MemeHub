@@ -1,4 +1,5 @@
 ﻿using MemeHub.Models.Models;
+using MemeHub.Services.Contracts;
 
 namespace MemeHub.Services
 {
