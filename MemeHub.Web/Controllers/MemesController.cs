@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
+using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
@@ -42,6 +43,7 @@ namespace MemeHub.Web.Controllers
 
         [HttpPost]
         [Route("Create")]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(MemeCreateBindingModel mcbm)
         {
 
@@ -67,6 +69,7 @@ namespace MemeHub.Web.Controllers
 
         [HttpPost]
         [Route("Edit/{id}")]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, MemeEditBindingModel bind)
         {
             if (this.ModelState.IsValid)
@@ -77,7 +80,6 @@ namespace MemeHub.Web.Controllers
 
             MemeEditViewModel mevm = Mapper.Map<MemeEditBindingModel, MemeEditViewModel>(bind);
             return this.View(mevm);
-
         }
 
         [HttpGet]
@@ -92,6 +94,7 @@ namespace MemeHub.Web.Controllers
 
         [HttpPost]
         [Route("Delete/{id}")]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             this.memesService.DeleteMeme(id);
@@ -99,10 +102,24 @@ namespace MemeHub.Web.Controllers
             return this.RedirectToAction("Profile", "Users");
         }
 
-        //[HttpGet]
-        //public ActionResult CreateComment()
-        //{
-        //    return View("~/Views/Memes/Details.cshtml", new CommentCreateViewModel());
-        //}
+        [HttpGet]
+        public ActionResult CreateComment()
+        {
+            return View("~/Views/Memes/Details.cshtml");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateComment(CommentCreateBindingModel ccvm, int memeId)
+        {
+            if (this.ModelState.IsValid)
+            {
+                this.memesService.CreateComment(ccvm, memeId);
+                return RedirectToAction("Details", "Memes");
+            }
+
+            CommentCreateViewModel mevm = Mapper.Map<CommentCreateBindingModel, CommentCreateViewModel>(ccvm);
+            return this.View(mevm);
+        }
     }
 }

@@ -10,22 +10,49 @@
             <header>
                 <h3>
                     <strong>
-                        @Html.ActionLink(@Model.Caption, "Details", "Memes", new { id = @Model.Id }, null)
+                        @Html.ActionLink(Model.Caption, "Details", "Memes", new { id = Model.Id }, null)
                     </strong>
                 </h3>
             </header>
-            <p class="text-muted">@Model.MemePoints Points @Model.Comments.Count() Comments</p>
+            <p class="text-muted">@Model.MemePoints Points @Model.DisplayComments.Count() Comments</p>
             <img src="@Model.MemeImageUrl" alt="@Model.Caption" width="500" />
             <hr />
-            @*@Html.DisplayFor(m=>@Model.Item2.Writer)
-            @Html.DisplayFor(m => @Model.Item2.PostDate,null, new { @class = "text-muted"} )
-            <p class="text-muted">@Model.Item2.PostDate</p>
-            @Html.TextAreaFor(m => @Model.Item2.Content, new { @class = "whatever-class", @cols = 10, @rows = 2 })*@
-            @foreach (var comment in Model.Comments)
+            @using (Html.BeginForm())
             {
-                <h5>@Html.DisplayFor(m => comment.Writer.UserName)</h5>
-                <p>@Html.DisplayFor(m => comment.Content)</p>
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div>
+                            <div class="col-md-10" id="textArea">
+                                @Html.TextAreaFor(m => m.CreateComment.Content, 2, 200,  new {@class = "form-control", @placeholder = "Enter a comment..."})
+                                @Html.ValidationMessageFor(m => m.CreateComment.Content)
+                            </div>
+                        </div>
+
+                        <div class="col-md-offset-11 col-md-1">
+
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" value="Post" class="btn btn-primary" />
             }
+
+            @if (Model.DisplayComments.Any())
+            {
+                foreach (var comment in Model.DisplayComments)
+                {
+                    <h5>@Html.DisplayFor(m => comment.Writer.UserName) :</h5>
+                    <p>
+                        @Html.DisplayFor(m => comment.Content)
+                        @Html.DisplayFor(m=>m.PostDate)
+                    </p>
+
+                }
+            }
+
         </article>
+
     </div>
 </div>

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using MemeHub.Models.ViewModels.Memes;
-using MemeHub.Services;
 using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers

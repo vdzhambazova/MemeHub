@@ -23,14 +23,5 @@ textarea {
     max-width: 280px;
 }
 
-#memehub-logo {
-    background: url(~/Images/memehub.jpg) no-repeat top left;
-     display: block;
-     width: 150px;
-     height: 150px;
-     text-indent: -9999px; /* hides the link text */
-}
-
-a#upload-btn. {
-    color: beige;
-}
+textArea#CreateComment_Content {
+max-width: 500px;}

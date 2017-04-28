@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\BirthDateAttribute.cs" />
+    <Compile Include="BindingModels\Comments\CommentCreateBindingModel.cs" />
     <Compile Include="BindingModels\Memes\MemeCreateBindingModel.cs" />
     <Compile Include="BindingModels\Memes\MemeEditBindingModel.cs" />
     <Compile Include="BindingModels\Users\UserEditBindingModel.cs" />

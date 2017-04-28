@@ -1,4 +1,5 @@
-﻿using MemeHub.Models.BindingModels.Memes;
+﻿using MemeHub.Models.BindingModels.Comments;
+using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
 
@@ -12,6 +13,6 @@ namespace MemeHub.Services.Contracts
         MemeDeleteViewModel GetDeleteMeme(int? id);
         MemeEditViewModel GetEditMeme(int id);
         MemeDetailsViewModel GetMemeDetails(int? id);
-        CommentCreateViewModel CreateComment(string userId, int memeId);
+        void CreateComment(CommentCreateBindingModel ccvm, int memeId);
     }
 }

@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using MemeHub.Models.Models;
 
-namespace MemeHub.Models.ViewModels.Comments
+namespace MemeHub.Models.BindingModels.Comments
 {
-    public class CommentCreateViewModel
+    public class CommentCreateBindingModel
     {
         public int Id { get; set; }
 

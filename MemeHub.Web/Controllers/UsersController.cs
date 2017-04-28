@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.ViewModels.Users;
-using MemeHub.Services;
 using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers
@@ -40,6 +39,7 @@ namespace MemeHub.Web.Controllers
 
         [HttpPost]
         [Route("Edit")]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(UserEditBindingModel uebm)
         {
             string userName = this.User.Identity.Name;

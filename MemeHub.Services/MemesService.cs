@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Comments;
@@ -61,11 +62,13 @@ namespace MemeHub.Services
             this.Context.SaveChanges();
         }
 
-        public CommentCreateViewModel CreateComment(string userId, int memeId)
+        public void CreateComment(CommentCreateBindingModel ccvm, int memeId)
         {
-            Comment comment = new Comment();
-            //   CommentCreateViewModel
-            return new CommentCreateViewModel();
+            Meme meme = this.Context.Memes.Find(memeId);
+            Comment comment = Mapper.Map<CommentCreateBindingModel, Comment>(ccvm);
+            meme.Comments.Add(comment);
+
+            this.Context.SaveChanges();
         }
     }
 }
