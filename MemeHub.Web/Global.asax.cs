@@ -27,6 +27,8 @@ namespace MemeHub.Web
         {
             Mapper.Initialize(expression =>
             {
+                expression.CreateMap<CommentDisplayViewModel, Comment>();
+                expression.CreateMap<Comment, CommentDisplayViewModel>();
                 expression.CreateMap<Meme, MemeUserViewModel>();
                 expression.CreateMap<ApplicationUser, UserProfileViewModel>();
                 expression.CreateMap<Meme, MemeDisplayViewModel>();
@@ -39,6 +41,10 @@ namespace MemeHub.Web
                 expression.CreateMap<Meme, MemeDeleteViewModel>();
                 expression.CreateMap<Meme, MemeDetailsViewModel>();
                 expression.CreateMap<CommentCreateBindingModel, CommentCreateViewModel>();
+                expression.CreateMap<CommentCreateViewModel, Comment>();
+                expression.CreateMap<CommentDisplayViewModel, Comment>();
+                expression.CreateMap<CommentCreateBindingModel, Comment>();
+                expression.CreateMap<MemeDetailsViewModel, MemeDetailsBindingModel>();
             });
         }
     }

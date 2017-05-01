@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div id="article-container" meme-id="@Model.Id" class="col-md-6 col-md-offset-3">
         <article>
             <header>
                 <h3>
@@ -14,10 +14,13 @@
                     </strong>
                 </h3>
             </header>
-            <p class="text-muted">@Model.MemePoints Points @Model.DisplayComments.Count() Comments</p>
+            <p class="text-muted"><span id="meme-points">@Model.MemePoints</span> Points @Model.Comments.Count() Comments</p>
             <img src="@Model.MemeImageUrl" alt="@Model.Caption" width="500" />
             <hr />
-            @using (Html.BeginForm())
+            <div id="btn-love" class="glyphicon glyphicon-heart-empty" style="font-size: 1.7em">
+                <br />
+            </div>
+            @using (Html.BeginForm("CreateComment", "Memes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-horizontal">
@@ -25,7 +28,7 @@
                     <div class="form-group">
                         <div>
                             <div class="col-md-10" id="textArea">
-                                @Html.TextAreaFor(m => m.CreateComment.Content, 2, 200,  new {@class = "form-control", @placeholder = "Enter a comment..."})
+                                @Html.TextAreaFor(m => m.CreateComment.Content, 2, 200, new { @class = "form-control", @placeholder = "Enter a comment..." })
                                 @Html.ValidationMessageFor(m => m.CreateComment.Content)
                             </div>
                         </div>
@@ -39,14 +42,14 @@
                 <input type="submit" value="Post" class="btn btn-primary" />
             }
 
-            @if (Model.DisplayComments.Any())
+            @if (Model.Comments.Any())
             {
-                foreach (var comment in Model.DisplayComments)
+                foreach (var comment in Model.Comments)
                 {
                     <h5>@Html.DisplayFor(m => comment.Writer.UserName) :</h5>
                     <p>
                         @Html.DisplayFor(m => comment.Content)
-                        @Html.DisplayFor(m=>m.PostDate)
+                        @Html.DisplayFor(m => m.PostDate)
                     </p>
 
                 }
@@ -56,3 +59,7 @@
 
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/love-meme.js")
+}

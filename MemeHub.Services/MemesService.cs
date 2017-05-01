@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using AutoMapper;
 using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.Models;
-using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Services.Contracts;
+using Microsoft.AspNet.Identity;
 
 namespace MemeHub.Services
 {
@@ -62,11 +63,23 @@ namespace MemeHub.Services
             this.Context.SaveChanges();
         }
 
-        public void CreateComment(CommentCreateBindingModel ccvm, int memeId)
+        public void CreateComment(CommentCreateBindingModel mdvm, int memeId)
+        {
+            var userId = HttpContext.Current.User.Identity.GetUserId();
+            ApplicationUser user = this.Context.Users.Find(userId);
+            Meme meme = this.Context.Memes.Find(memeId);
+            Comment comment = Mapper.Map<CommentCreateBindingModel, Comment>(mdvm);
+            comment.PostDate = DateTime.Now;
+            comment.Writer = user;
+            meme.Comments.Add(comment);
+
+            this.Context.SaveChanges();
+        }
+
+        public void LoveMeme(int memeId)
         {
             Meme meme = this.Context.Memes.Find(memeId);
-            Comment comment = Mapper.Map<CommentCreateBindingModel, Comment>(ccvm);
-            meme.Comments.Add(comment);
+            meme.MemePoints++;
 
             this.Context.SaveChanges();
         }

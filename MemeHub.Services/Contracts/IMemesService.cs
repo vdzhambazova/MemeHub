@@ -13,6 +13,7 @@ namespace MemeHub.Services.Contracts
         MemeDeleteViewModel GetDeleteMeme(int? id);
         MemeEditViewModel GetEditMeme(int id);
         MemeDetailsViewModel GetMemeDetails(int? id);
-        void CreateComment(CommentCreateBindingModel ccvm, int memeId);
+        void CreateComment(CommentCreateBindingModel mdvm, int memeId);
+        void LoveMeme(int memeId);
     }
 }

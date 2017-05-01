@@ -14,5 +14,7 @@ namespace MemeHub.Models.ViewModels.Comments
         public string Content { get; set; }
 
         public virtual Meme Meme { get; set; }
+
+        public ApplicationUser Writer { get; set; }
     }
 }

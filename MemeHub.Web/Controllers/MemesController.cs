@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Web.Mvc;
 using AutoMapper;
 using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.BindingModels.Memes;
@@ -102,24 +103,28 @@ namespace MemeHub.Web.Controllers
             return this.RedirectToAction("Profile", "Users");
         }
 
-        [HttpGet]
-        public ActionResult CreateComment()
-        {
-            return View("~/Views/Memes/Details.cshtml");
-        }
-
         [HttpPost]
+        [Route("Details/{id}/addComment")]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateComment(CommentCreateBindingModel ccvm, int memeId)
+        public ActionResult CreateComment(MemeDetailsBindingModel mdbm, int id)
         {
             if (this.ModelState.IsValid)
             {
-                this.memesService.CreateComment(ccvm, memeId);
+                this.memesService.CreateComment(mdbm.CreateComment, id);
                 return RedirectToAction("Details", "Memes");
             }
 
-            CommentCreateViewModel mevm = Mapper.Map<CommentCreateBindingModel, CommentCreateViewModel>(ccvm);
-            return this.View(mevm);
+            CommentCreateViewModel mevm = Mapper.Map<CommentCreateBindingModel, CommentCreateViewModel>(mdbm.CreateComment);
+            return this.RedirectToAction("Details", "Memes", mevm);
+        }
+
+        [HttpGet]
+        [Route("Details/{id}/loveMeme")]
+        public ActionResult LoveMeme(int id)
+        {
+            this.memesService.LoveMeme(id);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

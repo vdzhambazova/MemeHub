@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Comments;
 
@@ -9,7 +10,7 @@ namespace MemeHub.Models.ViewModels.Memes
     {
         public MemeDetailsViewModel()
         {
-            this.DisplayComments = new HashSet<CommentDisplayViewModel>();
+            this.Comments = new HashSet<CommentDisplayViewModel>();
         }
         public int Id { get; set; }
         public string MemeImageUrl { get; set; }
@@ -22,7 +23,7 @@ namespace MemeHub.Models.ViewModels.Memes
 
         public virtual CommentCreateViewModel CreateComment { get; set; }
 
-        public virtual ICollection<CommentDisplayViewModel> DisplayComments { get; set; }
+        public virtual ICollection<CommentDisplayViewModel> Comments { get; set; }
 
         public virtual ApplicationUser Poster { get; set; }
     }

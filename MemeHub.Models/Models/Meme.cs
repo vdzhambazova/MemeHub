@@ -25,7 +25,7 @@ namespace MemeHub.Models.Models
 
         public DateTime? PostDate { get; set; }
 
-        [Range(-1000000, 1000000)]
+        [Range(0, 1000000)]
         public int MemePoints { get; set; }
 
         public Category Category { get; set; }
