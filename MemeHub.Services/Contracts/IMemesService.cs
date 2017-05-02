@@ -1,6 +1,5 @@
 ﻿using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.BindingModels.Memes;
-using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
 
 namespace MemeHub.Services.Contracts

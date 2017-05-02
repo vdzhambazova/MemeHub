@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using MemeHub.Models.Models;
 
 namespace MemeHub.Models.ViewModels.Comments

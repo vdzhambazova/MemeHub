@@ -7,10 +7,10 @@ namespace MemeHub.Web.Controllers
 {
     [RequireHttps]
     [RoutePrefix("Home")]
-    [Authorize(Roles="Poster")]
+    [Authorize(Roles="Poster, Admin")]
     public class HomeController : Controller
     {
-        private IHomeService homeService;
+        private readonly IHomeService homeService;
 
         public HomeController(IHomeService homeService)
         {
@@ -26,7 +26,7 @@ namespace MemeHub.Web.Controllers
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetAll();
 
             //return RedirectToAction("Index", mdvm);
-            return View("~/Views/Home/Index.cshtml", mdvm);
+            return View("Index", mdvm);
         }
 
         [HttpGet]
@@ -35,7 +35,7 @@ namespace MemeHub.Web.Controllers
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetNew();
 
-            return View("~/Views/Home/Index.cshtml", mdvm);
+            return View("Index", mdvm);
         }
 
         [HttpGet]
@@ -44,7 +44,7 @@ namespace MemeHub.Web.Controllers
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetDank();
 
-            return View("~/Views/Home/Index.cshtml", mdvm);
+            return View("Index", mdvm);
         }
 
         [HttpGet]
@@ -53,7 +53,7 @@ namespace MemeHub.Web.Controllers
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetFun();
 
-            return View("~/Views/Home/Index.cshtml", mdvm);
+            return View("Index", mdvm);
         }
 
         [HttpGet]
@@ -62,12 +62,7 @@ namespace MemeHub.Web.Controllers
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetAwesome();
 
-            return View("~/Views/Home/Index.cshtml", mdvm);
+            return View("Index", mdvm);
         }
-
-        //public ActionResult Index(IEnumerable<MemeDisplayViewModel> mdvm)
-        //{
-        //    return this.View(mdvm);
-        //}
     }
 }

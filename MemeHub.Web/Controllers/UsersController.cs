@@ -5,11 +5,11 @@ using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers
 {
-    [Authorize(Roles = "Poster")]
+    [Authorize(Roles = "Poster, Admin")]
     [RoutePrefix("Users")]
     public class UsersController : Controller
     {
-        private IUsersService usersService;
+        private readonly IUsersService usersService;
 
         public UsersController(IUsersService usersService)
         {

@@ -3,60 +3,77 @@
 @{
     ViewBag.Title = "Memehub";
 }
-
-<div class="row">
-    <div id="article-container" meme-id="@Model.Id" class="col-md-6 col-md-offset-3">
-        <article>
-            <header>
-                <h3>
-                    <strong>
-                        @Html.ActionLink(Model.Caption, "Details", "Memes", new { id = Model.Id }, null)
-                    </strong>
-                </h3>
-            </header>
-            <p class="text-muted"><span id="meme-points">@Model.MemePoints</span> Points @Model.Comments.Count() Comments</p>
-            <img src="@Model.MemeImageUrl" alt="@Model.Caption" width="500" />
-            <hr />
-            <div id="btn-love" class="glyphicon glyphicon-heart-empty" style="font-size: 1.7em">
-                <br />
-            </div>
-            @using (Html.BeginForm("CreateComment", "Memes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-horizontal">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <div>
-                            <div class="col-md-10" id="textArea">
-                                @Html.TextAreaFor(m => m.CreateComment.Content, 2, 200, new { @class = "form-control", @placeholder = "Enter a comment..." })
-                                @Html.ValidationMessageFor(m => m.CreateComment.Content)
-                            </div>
-                        </div>
-
-                        <div class="col-md-offset-11 col-md-1">
-
-                        </div>
-                    </div>
-                </div>
-
-                <input type="submit" value="Post" class="btn btn-primary" />
-            }
-
-            @if (Model.Comments.Any())
-            {
-                foreach (var comment in Model.Comments)
-                {
-                    <h5>@Html.DisplayFor(m => comment.Writer.UserName) :</h5>
-                    <p>
-                        @Html.DisplayFor(m => comment.Content)
-                        @Html.DisplayFor(m => m.PostDate)
+<div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="article-container" meme-id="@Model.Id" class="col-md-6 col-md-offset-3">
+                <article>
+                    <header>
+                        <h3>
+                            <strong>
+                                @Html.ActionLink(Model.Caption, "Details", "Memes", new { id = Model.Id }, null)
+                            </strong>
+                        </h3>
+                    </header>
+                    <p class="text-muted">
+                        <span id="meme-points">@Model.MemePoints</span> Points @Model.Comments.Count() Comments
                     </p>
+                    <a id="btn-love" href="#" title="Love it" class="btn" data-count="0" style="font-size: 1.7em"><span>&#x2764;</span></a>
+                    <img src="@Model.MemeImageUrl" alt="@Model.Caption" width="555" />
+                    <hr />
+                    <div class="container">
+                        <div class="row">
+                            @using (Html.BeginForm("CreateComment", "Memes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-horizontal">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <div>
+                                            <div class="col-md-12" id="textArea">
+                                                @Html.TextAreaFor(m => m.CreateComment.Content, 2, 200, new { @class = "form-control", @placeholder = "Enter a comment..." })
+                                                @Html.ValidationMessageFor(m => m.CreateComment.Content)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Post" class="btn btn-primary" />
+                            }
+                        </div>
 
-                }
-            }
+                    </div>
 
-        </article>
+                    @if (Model.Comments.Any())
+                    {
+                        <br />
+                        foreach (var comment in Model.Comments)
+                        {
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-1" style="padding-left: 0px">
+                                        <div class="thumbnail">
+                                            <img src="@comment.Writer.ProiflePictureUrl" class="img-responsive" alt="Profile Picture" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <strong>@Html.DisplayFor(m => comment.Writer.UserName)</strong>
+                                                <span class="text-muted" type="date">@Convert.ToString($"{@comment.PostDate:dd/MM/yyyy}")</span>
+                                            </div>
+                                            <div class="panel-body">
+                                                @Html.DisplayFor(m => comment.Content)
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </article>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MemeHub.Models.BindingModels.Comments;
-using MemeHub.Models.Models;
-using MemeHub.Models.ViewModels.Comments;
+﻿using MemeHub.Models.BindingModels.Comments;
 
 namespace MemeHub.Models.BindingModels.Memes
 {

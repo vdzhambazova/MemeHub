@@ -17,7 +17,7 @@ namespace MemeHub.Web.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        private IAccountService accountService; 
+        private readonly IAccountService accountService; 
 
         public AccountController(IAccountService accountService)
         {

@@ -10,10 +10,10 @@ using MemeHub.Services.Contracts;
 namespace MemeHub.Web.Controllers
 {
     [RoutePrefix("Memes")]
-    [Authorize(Roles = "Poster")]
+    [Authorize(Roles = "Poster, Admin")]
     public class MemesController : Controller
     {
-        private IMemesService memesService;
+        private readonly IMemesService memesService;
 
         public MemesController(IMemesService memesService)
         {

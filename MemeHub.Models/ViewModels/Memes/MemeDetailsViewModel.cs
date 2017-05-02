@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Comments;
 

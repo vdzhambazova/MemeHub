@@ -1,10 +1,12 @@
 using System.Data.Entity;
+using MemeHub.Data.Contracts;
+using MemeHub.Data.Migrations;
 using MemeHub.Models.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MemeHub.Data
 {
-    public class MemeHubContext : IdentityDbContext<ApplicationUser>
+    public class MemeHubContext : IdentityDbContext<ApplicationUser>, IMemeHubContext
     {
         public MemeHubContext()
             : base("MemeHubContext", throwIfV1Schema: false)
@@ -20,6 +22,12 @@ namespace MemeHub.Data
         public static MemeHubContext Create()
         {
             return new MemeHubContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MemeHubContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace MemeHub.Services
         {
             this.Context = new MemeHubContext();
         }
+
         public MemeHubContext Context { get; }
     }
 }

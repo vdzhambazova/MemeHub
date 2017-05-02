@@ -87,12 +87,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IMemeHubContext.cs" />
     <Compile Include="MemeHubContext.cs" />
     <Compile Include="Migrations\201704240700264_Initial.cs" />
     <Compile Include="Migrations\201704240700264_Initial.Designer.cs">
       <DependentUpon>201704240700264_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Mocks\FakeDbSet.cs" />
+    <Compile Include="Mocks\FakeMemehubContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
