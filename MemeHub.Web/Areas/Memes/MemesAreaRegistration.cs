@@ -17,7 +17,7 @@ namespace MemeHub.Web.Areas.Memes
 
             context.MapRoute(
                 "Memes_default",
-                "Memes/{controller}/{action}/{id}",
+                "{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

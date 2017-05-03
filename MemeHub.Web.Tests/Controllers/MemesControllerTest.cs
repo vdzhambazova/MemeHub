@@ -1,60 +1,65 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using MemeHub.Services;
+﻿using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Services.Contracts;
 using MemeHub.Web.Areas.Memes.Controllers;
 using MemeHub.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using TestStack.FluentMVCTesting;
 
 namespace MemeHub.Web.Tests.Controllers
 {
-    /// <summary>
-    /// Summary description for MemesControllerTest
-    /// </summary>
     [TestClass]
     public class MemesControllerTest
     {
         private MemesController memeController;
-        private IMemesService memeService;
-
 
 
         [TestInitialize]
         public void Init()
         {
-            this.memeService = new MemesService();
-            this.memeController= new MemesController(memeService);
+            var memeServiceMock = new Mock<IMemesService>();
+            this.memeController = new MemesController(memeServiceMock.Object);
         }
 
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
+        [TestMethod]
+        public void TestCreateGet_ShouldRenderDefaultView()
+        {
+            this.memeController.WithCallTo(c => c.Create())
+                .ShouldRenderDefaultView();
+        }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestEditGet_ShouldRenderDefaultView()
         {
-            //
-            // TODO: Add test logic here
-            //
+            this.memeController.WithCallTo(c => c.Edit(6))
+                .ShouldRenderDefaultView();
+        }
+
+        [TestMethod]
+        public void TestEditPost_ShouldRedirectCorrectly()
+        {
+            var mcbm = new MemeEditBindingModel()
+            {
+                Caption = "OMG",
+            };
+
+            this.memeController.WithCallTo(c => c.Edit(6,mcbm))
+                .ShouldRedirectTo<UsersController>(co => co.Profile());
+        }
+
+        [TestMethod]
+        public void TestDeleteGet_ShouldRedirectCorrectly()
+        {
+            int? id = 6;
+            this.memeController.WithCallTo(c => c.Delete(id))
+                .ShouldRenderDefaultView();
+        }
+
+        [TestMethod]
+        public void TestDeletePost_ShouldRedirectCorrectly()
+        {
+            this.memeController.WithCallTo(c => c.Delete(6))
+                .ShouldRedirectTo<UsersController>(co => co.Profile());
         }
     }
 }

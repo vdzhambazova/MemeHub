@@ -19,19 +19,18 @@ namespace MemeHub.Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("Hottest")]
+        [Route("All")]
         [Route("~/", Name = "default")]
         public ActionResult All()
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetAll();
 
-            //return RedirectToAction("Index", mdvm);
             return View("Index", mdvm);
         }
 
         [HttpGet]
         [Route("Freshest")]
-        public ActionResult New()
+        public ActionResult Freshest()
         {
             IEnumerable<MemeDisplayViewModel> mdvm = this.homeService.GetNew();
 

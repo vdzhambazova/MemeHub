@@ -9,7 +9,6 @@ namespace MemeHub.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
-            AreaRegistration.RegisterAllAreas();
             routes.MapRoute(
            "Phefault",
            "{controller}/{action}/{id}",

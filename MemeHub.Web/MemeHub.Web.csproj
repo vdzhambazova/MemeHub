@@ -374,7 +374,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Memes\Models\" />
     <Folder Include="Views\Memes\" />
   </ItemGroup>
   <PropertyGroup>
