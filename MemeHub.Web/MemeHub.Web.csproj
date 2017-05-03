@@ -252,10 +252,11 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Memes\MemesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MemesController.cs" />
+    <Compile Include="Areas\Memes\Controllers\MemesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -291,6 +292,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Memes\Views\web.config" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\memehub.jpg" />
@@ -316,7 +318,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Memes\Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -341,11 +343,12 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Users\Profile.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Memes\Create.cshtml" />
-    <Content Include="Views\Memes\Edit.cshtml" />
-    <Content Include="Views\Memes\Delete.cshtml" />
+    <Content Include="Areas\Memes\Views\Memes\Create.cshtml" />
+    <Content Include="Areas\Memes\Views\Memes\Edit.cshtml" />
+    <Content Include="Areas\Memes\Views\Memes\Delete.cshtml" />
     <Content Include="Views\Shared\_MemesProfilePartial.cshtml" />
-    <Content Include="Views\Memes\Details.cshtml" />
+    <Content Include="Areas\Memes\Views\Memes\Details.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MemeHub.Data\MemeHub.Data.csproj">
@@ -370,7 +373,10 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Memes\Models\" />
+    <Folder Include="Views\Memes\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -7,9 +7,9 @@ using MemeHub.Models.ViewModels.Comments;
 using MemeHub.Models.ViewModels.Memes;
 using MemeHub.Services.Contracts;
 
-namespace MemeHub.Web.Controllers
+namespace MemeHub.Web.Areas.Memes.Controllers
 {
-    [RoutePrefix("Memes")]
+    [RouteArea("Memes")]
     [Authorize(Roles = "Poster, Admin")]
     public class MemesController : Controller
     {

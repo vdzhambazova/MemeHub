@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using MemeHub.Services;
 using MemeHub.Services.Contracts;
+using MemeHub.Web.Areas.Memes.Controllers;
 using MemeHub.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
