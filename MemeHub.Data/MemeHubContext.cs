@@ -28,6 +28,7 @@ namespace MemeHub.Data
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MemeHubContext, Configuration>());
             base.OnModelCreating(modelBuilder);
+
         }
     }
 }
