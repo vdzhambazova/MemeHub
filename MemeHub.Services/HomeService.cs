@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using MemeHub.Data;
 using MemeHub.Models.Enums;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
@@ -54,5 +55,7 @@ namespace MemeHub.Services
 
             return mdvm;
         }
+
+        public override MemeHubContext Context { get; set; }
     }
 }

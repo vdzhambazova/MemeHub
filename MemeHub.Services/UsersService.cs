@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using MemeHub.Data;
 using MemeHub.Models.BindingModels.Users;
 using MemeHub.Models.Models;
 using MemeHub.Models.ViewModels.Memes;
@@ -37,5 +38,7 @@ namespace MemeHub.Services
 
             this.Context.SaveChanges();
         }
+
+        public override MemeHubContext Context { get; set; }
     }
 }

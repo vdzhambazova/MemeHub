@@ -1,4 +1,5 @@
-﻿using MemeHub.Models.Models;
+﻿using MemeHub.Data;
+using MemeHub.Models.Models;
 using MemeHub.Services.Contracts;
 
 namespace MemeHub.Services
@@ -13,5 +14,7 @@ namespace MemeHub.Services
             this.Context.Posters.Add(poster);
             this.Context.SaveChanges();
         }
+
+        public override MemeHubContext Context { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using MemeHub.Data;
 using MemeHub.Models.BindingModels.Comments;
 using MemeHub.Models.BindingModels.Memes;
 using MemeHub.Models.Models;
@@ -83,5 +84,7 @@ namespace MemeHub.Services
 
             this.Context.SaveChanges();
         }
+
+        public override MemeHubContext Context { get; set; }
     }
 }
