@@ -94,8 +94,6 @@
       <DependentUpon>201704240700264_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Mocks\FakeDbSet.cs" />
-    <Compile Include="Mocks\FakeMemehubContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

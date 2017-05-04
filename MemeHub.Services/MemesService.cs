@@ -58,7 +58,7 @@ namespace MemeHub.Services
         public void DeleteMeme(int id)
         {
             Meme meme = this.Context.Memes.Find(id);
-            this.Context.Memes.Remove(meme);
+            meme.IsDeleted = true;
 
             this.Context.SaveChanges();
         }

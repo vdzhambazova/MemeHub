@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using MemeHub.Models.Enums;
 
@@ -33,5 +34,9 @@ namespace MemeHub.Models.Models
         public virtual ApplicationUser OriginalPoster { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        [DefaultValue("false")]
+        public bool IsDeleted { get; set; }
     }
 }
+    

@@ -12,7 +12,7 @@ namespace MemeHub.Services
     {
         public IEnumerable<MemeDisplayViewModel> GetAll()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.OrderByDescending(m => m.MemePoints);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.IsDeleted == false).OrderByDescending(m => m.MemePoints);
             IEnumerable<MemeDisplayViewModel> mdvm =
                 Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
@@ -21,7 +21,7 @@ namespace MemeHub.Services
 
         public IEnumerable<MemeDisplayViewModel> GetNew()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.OrderByDescending(m => m.PostDate);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.IsDeleted == false).OrderByDescending(m => m.PostDate);
             IEnumerable<MemeDisplayViewModel> mdvm =
                 Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
@@ -30,7 +30,7 @@ namespace MemeHub.Services
 
         public IEnumerable<MemeDisplayViewModel> GetDank()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Dank).OrderByDescending(m => m.MemePoints);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.IsDeleted == false && m.Category == Category.Dank).OrderByDescending(m => m.MemePoints);
             IEnumerable<MemeDisplayViewModel> mdvm =
                 Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
@@ -39,7 +39,7 @@ namespace MemeHub.Services
 
         public IEnumerable<MemeDisplayViewModel> GetFun()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Hilarious).OrderByDescending(m => m.MemePoints);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.IsDeleted == false && m.Category == Category.Hilarious).OrderByDescending(m => m.MemePoints);
             IEnumerable<MemeDisplayViewModel> mdvm =
                 Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 
@@ -48,7 +48,7 @@ namespace MemeHub.Services
 
         public IEnumerable<MemeDisplayViewModel> GetAwesome()
         {
-            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.Category == Category.Awesome).OrderByDescending(m => m.MemePoints);
+            IEnumerable<Meme> memes = this.Context.Memes.Where(m => m.IsDeleted == false && m.Category == Category.Awesome).OrderByDescending(m => m.MemePoints);
             IEnumerable<MemeDisplayViewModel> mdvm =
                 Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeDisplayViewModel>>(memes);
 

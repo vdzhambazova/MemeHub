@@ -1,0 +1,23 @@
+﻿@model MemeHub.Models.ViewModels.Memes.MemeDetailsViewModel
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm("CreateComment", "Memes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div>
+                        <div class="col-md-12" id="textArea">
+                            @Html.TextAreaFor(m => m.CreateComment.Content, 2, 200, new { @class = "form-control", @placeholder = "Enter a comment..." })
+                            @Html.ValidationMessageFor(m => m.CreateComment.Content)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Post" class="btn btn-primary" />
+        }
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model MemeHub.Models.ViewModels.Memes.MemeDetailsViewModel
+<br />
+@foreach (var comment in Model.Comments)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-1" style="padding-left: 0px">
+                <div class="thumbnail">
+                    <img src="@comment.Writer.ProiflePictureUrl" class="img-responsive" alt="Profile Picture" />
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>@Html.DisplayFor(m => comment.Writer.UserName)</strong>
+                        <span class="text-muted" type="date">@Convert.ToString($"{comment.PostDate:dd/MM/yyyy}")</span>
+                    </div>
+                    <div class="panel-body">
+                        @Html.DisplayFor(m => comment.Content)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+

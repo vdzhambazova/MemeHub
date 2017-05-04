@@ -16,7 +16,7 @@ namespace MemeHub.Services
             ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == userName);
             UserProfileViewModel upvm = Mapper.Map<ApplicationUser, UserProfileViewModel>(user);
             Poster poster = this.Context.Posters.FirstOrDefault(p => p.User.UserName == user.UserName);
-            upvm.Memes = Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeUserViewModel>>(poster.Memes);
+            upvm.Memes = Mapper.Map<IEnumerable<Meme>, IEnumerable<MemeUserViewModel>>(poster.Memes.Where(m=>m.IsDeleted == false));
 
             return upvm;
         }

@@ -293,6 +293,9 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Memes\Views\web.config" />
+    <Content Include="Areas\Memes\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Memes\Views\Shared\_CreateCommentPartial.cshtml" />
+    <Content Include="Areas\Memes\Views\Shared\_DisplayCommentPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\memehub.jpg" />
@@ -373,9 +376,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Memes\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
