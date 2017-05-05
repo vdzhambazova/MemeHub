@@ -296,6 +296,7 @@
     <Content Include="Areas\Memes\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Memes\Views\Shared\_CreateCommentPartial.cshtml" />
     <Content Include="Areas\Memes\Views\Shared\_DisplayCommentPartial.cshtml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\memehub.jpg" />

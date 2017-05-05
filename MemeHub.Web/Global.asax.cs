@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Data.Entity.Migrations;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
@@ -16,6 +18,8 @@ namespace MemeHub.Web
     {
         protected void Application_Start()
         {
+            var migrator = new DbMigrator(new DbMigrationsConfiguration());
+            migrator.Update();
             ConfigureMapping();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
