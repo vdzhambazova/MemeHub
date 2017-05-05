@@ -18,8 +18,6 @@ namespace MemeHub.Web
     {
         protected void Application_Start()
         {
-            var migrator = new DbMigrator(new DbMigrationsConfiguration());
-            migrator.Update();
             ConfigureMapping();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
