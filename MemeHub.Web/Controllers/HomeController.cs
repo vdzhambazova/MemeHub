@@ -5,7 +5,7 @@ using MemeHub.Services.Contracts;
 
 namespace MemeHub.Web.Controllers
 {
-    [RequireHttps]
+   // [RequireHttps]
     [RoutePrefix("Home")]
     [Authorize(Roles="Poster, Admin")]
     public class HomeController : Controller
